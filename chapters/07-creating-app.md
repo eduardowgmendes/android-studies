@@ -202,5 +202,69 @@ Na classe `WordDAO`, modifique o tipo de retorno do método `getAlphabetizedWord
 
 Consulte a documentação do [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData.html) para saber mais sobre outras maneiras de usar o `LiveData` ou assista a este vídeo [Architecture Components: LifeData and Lifecycle](https://www.youtube.com/watch?v=OMcDk2_4LSk&index=8&list=PLWz5rJ2EKKc9mxIBd0DRw9gwXuQshgmn2). 
 
+## `RoomDatabase`
+O banco de dados Room oferece uma camada de abstração sobre o SQLite para permitir acesso fluente ao banco de dados e, ao mesmo tempo, aproveitar toda a capacidade do SQLite.
+
+Muito antigamente para trabalhar com banco de dados no Android era necessário ter um pouco de paciência e bastante cuidado pois era necessário utilizar uma classe chamada `SQLiteOpenHelper` e definir todos os métodos de consulta e manipulação do banco além de trabalhar com Cursores. Era um trabalho imenso e propenso a erros já que se escrevêssemos qualquer querie incorretamente toda a aplicação falhava e tínhamos que buscar os erros um a um. 
+
+Apps que processam quantidades não triviais de dados estruturados podem se beneficiar muito da persistência desses dados localmente. O caso de uso mais comum é armazenar as partes de dados relevantes em cache. Dessa forma, quando o dispositivo não conseguir acessar a rede, o usuário ainda poderá navegar pelo conteúdo enquanto estiver off-line. Todas as alterações de conteúdo feitas pelo usuário serão sincronizadas com o servidor quando o dispositivo ficar on-line novamente.
+
+É altamente recomendável usar o Room em vez do SQLite, porque o Room cuida desses problemas para você. No entanto, se você prefere usar APIs SQLite diretamente, leia Salvar dados usando o SQLite.
+
+* Room é uma camada de abstração sobre um banco de dados SQLite.
+
+* O Room cuida de tarefas comuns que você costumava lidar com um [SQLiteOpenHelper](https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html).
+
+* O Room usa o DAO para emitir consultas ao banco de dados.
+
+* Por padrão, para evitar um desempenho ruim da interface do usuário, o Room não permite emitir consultas no thread principal. Quando as consultas de sala retornam o [LiveData](https://developer.android.com/topic/libraries/architecture/livedata), as consultas são executadas automaticamente de forma assíncrona em um encadeamento em segundo plano.
+
+* O Room fornece verificações em tempo de compilação de instruções SQLite.
+
+### Implementando o Banco de Dados 
+
+Sua classe que representará um banco de dados Room deve ser declarada como `abstract` e precisa estender `RoomDatabase`. Normalmente você só precisará de uma instância singleton desse banco de dados para toda a sua aplicação.
+
+Vamos criar uma classe e nomeá-la como `WordRoomDatabase`: 
+
+```java
+@Database(entities = {Word.class}, version = 1, exportSchema = false)
+public abstract class WordRoomDatabase extends RoomDatabase {
+
+   public abstract WordDao wordDao();
+
+   private static volatile WordRoomDatabase INSTANCE;
+   private static final int NUMBER_OF_THREADS = 4;
+   static final ExecutorService databaseWriteExecutor =
+        Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
+   static WordRoomDatabase getDatabase(final Context context) {
+        if (INSTANCE == null) {
+            synchronized (WordRoomDatabase.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            WordRoomDatabase.class, "word_database")
+                            .build();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+}
+``` 
+Vejamos em detalhes esse código: 
+
+1. Conforme mencionado anteriormente a classe que representará o banco de dados Room deve ser abstrata e estender `RoomDatabase`.
+
+2. Você anota a classe como um banco de dados do Room com `@Database` e usa os parâmetros de anotação para declarar as entidades que pertencem ao banco de dados e definir o número da versão. Cada entidade corresponde a uma tabela que será criada no banco de dados. As migrações de banco de dados estão além do escopo deste exemplo, portanto, definimos `exportSchema` como `false` aqui para evitar mensagens de alerta durante o build da aplicação. Em um aplicativo real, considere definir um diretório para o Room usar para exportar o esquema, para que você possa verificar o esquema atual no seu sistema de controle de versão.
+
+3. Você faz o banco de dados prover seus DAOs criando um método getter abstrato para cada `@Dao`.
+
+4. Definimos um [Singleton](https://pt.wikipedia.org/wiki/Singleton) para prevenir múltiplas instâncias do banco de dados abertas simultâneamente.
+
+5. `getDatabase()`retorna o singleton. Ele criará o banco de dados na primeira vez que for acessado, usando o construtor de banco de dados do Room para criar um objeto `RoomDatabase` no contexto do aplicativo a partir da classe `WordRoomDatabase` e o nomeie como "word_database".
+
+6. Criamos um objeto ExecutorService com um número fixo de threads que serão usadas para realizar as operações sobre o banco de dados de forma assíncrona em uma thread rodando em background.  
+
   
  
