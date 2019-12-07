@@ -24,7 +24,7 @@ O diagrama abaixo demonstra a forma básica dessa arquitetura:
  
 * [LiveData](https://developer.android.com/topic/libraries/architecture/livedata): É uma classe armazenadora de dados observáveis. Diferente de um observável comum, o LiveData conta com reconhecimento de ciclo de vida, ou seja, ele respeita o ciclo de vida de outros componentes do app, como atividades, fragmentos ou serviços. Esse reconhecimento garante que o LiveData atualize apenas os observadores de componente do app que estão em um estado ativo no ciclo de vida.
 
-Se desejar saber mais a respeito dos Arch Components recomendo a leitura completa do [Guia para a arquitetura do app]()
+Se desejar saber mais a respeito dos Arch Components recomendo a leitura completa do [Guia para a arquitetura do app](https://developer.android.com/jetpack/docs/guide)
 
 ## O que iremos contruir? 
 Iremos criar um app que implementa a arquitetura recomendada pelo Google usando os Architecture Components. O aplicativo que iremos fazer armazena uma lista de palavras em um banco de dados SQLite Room e exibe-as em um `RecyclerView` O aplicativo é simples, mas suficientemente complexo para ser usado como modelo para desenvolver seus próprios projetos posteriormente.
