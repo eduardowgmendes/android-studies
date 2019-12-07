@@ -165,12 +165,19 @@ public interface WordDao {
 Veremos essa classe em detalhes: 
 
 1. `WordDAO` é uma `interface`; DAOs devem ser interfaces ou classes abstratas. 
+
 2. A annotation `@Dao` identifica a classe como um DAO para o ROOM.
+
 3. `void insert(Word word)`: Declara um método para inserir uma palavra no banco de dados.
+
 4. A annotation `@Insert` é uma anotação especial de método ao qual não é necessário inserir nenhuma linha de SQL para que o Room faça a inserção no banco de dados. Há também as annotations `@Delete` e `@Update` para deletar e atualizar registros respectivamente. Não usaremos essas duas nesse exemplo. 
+
 5. `onConflict = OnConflictStrategy.IGNORE`: Essa configuração faz com que o Room ignore uma nova palavra a ser inserida no banco de dados caso ela seja exatamente igual a que já está presente no banco de dados. Para saber mais sobre `conflict strategies`, leia a [documentação oficial](https://developer.android.com/reference/androidx/room/OnConflictStrategy.html)   
+
 6. O método `deleteAll()` é usado para deletar todos os registros da tabela.
-7. Não há nehuma annotation para deletar múltiplos registros de uma vez, portanto `deleteAll()` é anotado com `@Query(DELETE FROM word_table)` com o parâmetro SQL `DELETE FROM word_table`. Se você conhece um pouco de SQL sabe que a cláusula `DELETE` sem a cláusula `WHERE` deleta todos os registros da tabela de uma só vez.  
+
+7. Não há nehuma annotation para deletar múltiplos registros de uma vez, portanto `deleteAll()` é anotado com `@Query(DELETE FROM word_table)` com o parâmetro SQL `DELETE FROM word_table`. **Se você conhece um pouco de SQL sabe que a cláusula `DELETE` sem a cláusula `WHERE` deleta todos os registros da tabela de uma só vez.**  
+
 8. `List<Word> getAlphabetizedWords()`: Retorna uma lista de palavras em ordem alfabética ascendente usando o parâmetro SQL `ORDER BY word ASC` da anotação presente nele `@Query("SELECT * from word_table ORDER BY word ASC")`.
 
 Veja mais sobre DAOs em [Como acessar dados usando DAOs do Room](https://developer.android.com/training/data-storage/room/accessing-data.html).
