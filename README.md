@@ -40,7 +40,7 @@ Construiremos um aplicativo que:
 ### Panorama Geral dos componentes de arquitetura que o exemplo utilizará 
 O diagrama a seguir mostra todas as partes do aplicativo. Cada uma das caixas anexas (exceto o banco de dados SQLite) representa uma classe que você criará.
 
-![Diagrama da estrutura do App](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/1205d9f95688b35b.png)
+![Diagrama da estrutura do App](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/overview-diagram.png)
 
 ### O que você irá aprender? 
 Como projetar e construir um aplicativo usando as bibliotecas da Architecture Components Room e Lifecycles.
