@@ -84,6 +84,79 @@ Há dois métodos para ativar cada tipo de componente:
 * Com o Android 5.0 (API nível 21) e posteriores, você pode usar a classe JobScheduler para programar ações. Para versões anteriores do Android, é possível iniciar um serviço (ou dar novas instruções a um serviço em andamento) passando um Intent a startService(). Também é possível vincular ao serviço passando um Intent a bindService().
 * Você pode iniciar uma transmissão passando um Intent para métodos como `sendBroadcast()`, `sendOrderedBroadcast()` ou `sendStickyBroadcast()`.
 * É possível iniciar uma consulta a um provedor de conteúdo chamando `query()` em um `ContentResolver`.
+
+Para saber mais sobre intents, consulte o documento Intents e filtros de intents. Os documentos a seguir fornecem mais informações sobre a ativação de componentes específicos: Atividades, Serviços, BroadcastReceiver e Provedores de Conteúdo.
+
+## O Arquivo de Manifesto
+Antes de o sistema Android iniciar um componente de aplicativo, é preciso ler o arquivo de manifesto AndroidManifest.xml do aplicativo para que o sistema saiba que o componente existe. O aplicativo precisa declarar todos os seus componentes nesse arquivo, que precisa estar na raiz do diretório do projeto do aplicativo.
+
+O manifesto faz outras coisas além de declarar os componentes do aplicativo, por exemplo:
+
+
+    Identifica todas as permissões do usuário de que o aplicativo precisa, como acesso à Internet ou acesso somente leitura aos contatos do usuário.
+    Declara o nível de API mínimo exigido pelo aplicativo com base nas APIs que o aplicativo usa.
+    Declara os recursos de hardware e software usados ou exigidos pelo aplicativo, como câmera, serviços de Bluetooth ou tela multitoque.
+    Declara as bibliotecas API de que o aplicativo precisa para ser vinculado (além das APIs de biblioteca do Android), como a Biblioteca do Google Maps.
+
+
+### Declaração de componentes
+A principal tarefa do manifesto é informar ao sistema os componentes do aplicativo. Por exemplo, um arquivo de manifesto pode declarar uma atividade da seguinte forma: 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest ... >
+    <application android:icon="@drawable/app_icon.png" ... >
+        <activity android:name="com.example.project.ExampleActivity"
+                  android:label="@string/example_label" ... >
+        </activity>
+        ...
+    </application>
+</manifest>
+```
+
+No elemento `<application>`, o atributo android:icon aponta para recursos de um ícone que identifica o aplicativo.
+
+No elemento `<activity>`, o atributo android:name especifica o nome da classe totalmente qualificada da subclasse de Activity e o atributo android:label especifica uma string a usar como rótulo da atividade visível ao usuário.
+
+É necessário declarar todos os componentes do aplicativo que usam os elementos a seguir:
+
+* Elementos `<activity>` para atividades
+* Elementos `<service>` para serviços
+* Elementos `<receiver>` para broadcast receivers
+* Elementos `<provider>` para provedores de conteúdo
+
+Atividades, serviços e provedores de conteúdo incluídos na fonte, mas não declarados no manifesto, não ficam visíveis para o sistema e, consequentemente, podem não ser executados. No entanto, broadcast receivers podem ser declarados no manifesto dinamicamente no código (como objetos `BroadcastReceiver`) e registrados no sistema chamando-se `registerReceiver()`.
+
+Para saber mais sobre a estrutura do arquivo de manifesto de aplicativos, consulte a documentação O arquivo *AndroidManifest.xml*. 
+
+### Declaração de recursos de componentes
+Conforme abordado acima, em Ativação de componentes, é possível usar um Intent para iniciar atividades, serviços e broadcast receivers. Você pode usar um Intent nomeando explicitamente o componente-alvo (usando o nome da classe do componente) no intent. Também é possível usar um intent implícito. Ele descreve o tipo de ação a ser realizada e fornece a opção de informar os dados sobre os quais você quer realizá-la. O intent implícito permite que o sistema encontre um componente no dispositivo que possa realizar a ação e iniciá-la. Se houver mais de um componente que possa executar a ação descrita pelo intent, o usuário selecionará qual deles usar.
+
+**Atenção**: se você usar um intent para iniciar um Service, use um intent explícito para verificar se seu aplicativo é seguro. O uso de um intent implícito para iniciar um serviço representa um risco de segurança, porque não é possível determinar qual serviço responderá ao intent, e o usuário não poderá ver que serviço é iniciado. A partir do Android 5.0 (API de nível 21), o sistema lança uma exceção ao chamar bindService() com um intent implícito. Não declare filtros de intents para seus serviços. 
+
+Para o sistema identificar os componentes que podem responder a um intent, compara-se o intent recebido com os filtros de intent fornecidos no arquivo de manifesto de outros aplicativos no dispositivo.
+
+Ao declarar uma atividade no manifesto do aplicativo, é possível incluir filtros de intents que declarem os recursos da atividade para que ela responda a intents de outros aplicativos. Para declarar um filtro de intents no componente, adiciona-se um elemento <intent-filter> como filho do elemento de declaração do componente.
+
+Por exemplo, se você estiver criando um app de e-mails com uma atividade de compor um novo e-mail, poderá declarar um filtro de intents para responder a intents “enviar” (para enviar um novo e-mail), assim:
+
+```xml
+<manifest ... >
+    ...
+    <application ... >
+        <activity android:name="com.example.project.ComposeEmailActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <data android:type="*/*" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+```
+
+Em seguida, se outro aplicativo criar um intent com a ação ACTION_SEND e passá-la para startActivity(), o sistema poderá iniciar a atividade de forma que o usuário possa rascunhar e enviar um e-mail.
+
+Para saber mais sobre filtros de intents, consulte o documento Intents e filtros de intents. 
  
 
 

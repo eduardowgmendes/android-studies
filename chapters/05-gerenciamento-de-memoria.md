@@ -90,7 +90,7 @@ O callback `onTrimMemory()` foi adicionado no Android 4.0 (API nível 14). Em ve
 
 ### Verificar quanta memória você deve usar
 
-Para permitir vários processos em execução, o Android define um limite rígido para o tamanho de heap atribuído a cada app. O limite exato para o tamanho de heap varia entre os dispositivos com base na quantidade de RAM disponível no dispositivo. Se seu app atingir a capacidade de heap e tentar alocar mais memória, o sistema gerará um OutOfMemoryError. 
+Para permitir vários processos em execução, o Android define um limite rígido para o tamanho de heap atribuído a cada app. O limite exato para o tamanho de heap varia entre os dispositivos com base na quantidade de RAM disponível no dispositivo. Se seu app atingir a capacidade de heap e tentar alocar mais memória, o sistema gerará um `OutOfMemoryError`. 
 
 Para evitar a falta de memória, você pode consultar o sistema para determinar quanto espaço de heap há disponível no dispositivo atual. Para fazer essa consulta, chame `getMemoryInfo()`. Isso retorna um objeto `ActivityManager.MemoryInfo` que fornece informações sobre o status atual da memória do dispositivo, incluindo memória disponível, memória total e limite de memória, ou seja, o nível de memória em que o sistema começa a encerrar processos. O objeto `ActivityManager.MemoryInfo` também expõe um booleano simples, `lowMemory`, que informa se a memória do dispositivo está acabando. 
 
@@ -127,7 +127,7 @@ Deixar um serviço em execução quando ele não é necessário é um dos piores
 
 Quando você inicia um serviço, o sistema prefere sempre manter o processo desse serviço em execução. Esse comportamento torna os processos de serviços muito caros, porque a RAM usada por um serviço permanece indisponível para outros processos. Isso reduz o número de processos em cache que o sistema pode manter no cache de LRU, tornando a alternância de apps menos eficiente. Isso pode até gerar uma sobrecarga no sistema quando a memória está baixa, e o sistema não conseguirá manter processos suficientes para hospedar todos os serviços em execução. 
 
-Em geral, é preciso evitar o uso de serviços persistentes devido às demandas contínuas que elas colocam na memória disponível. Em vez disso, recomendamos que você use uma implementação alternativa, como JobScheduler. Para saber mais sobre como usar JobScheduler para programar processos em segundo plano, consulte Otimizações em segundo plano. 
+Em geral, é preciso evitar o uso de serviços persistentes devido às demandas contínuas que elas colocam na memória disponível. Em vez disso, recomendamos que você use uma implementação alternativa, como `JobScheduler`. Para saber mais sobre como usar `JobScheduler` para programar processos em segundo plano, consulte Otimizações em segundo plano. 
 
 Se você precisa usar um serviço, a melhor maneira de limitar a vida útil dele é usando um IntentService, que encerra a si mesmo assim que o processamento do intent que o iniciou é concluído. Para ver mais informações, leia Execução de um serviço em segundo plano. 
 
