@@ -35,7 +35,7 @@ Construiremos um aplicativo que:
 * Exibe todas as palavras em um `RecyclerView` em `MainActivity`.
 * Abre uma segunda atividade quando o usuário toca no botão `+`. Quando o usuário digita uma palavra, adiciona a palavra ao banco de dados e à lista.
 
-------|-------|-------|
+------|-------|-------
 ![](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/d4da895890891e9f.png) | ![](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/72a92cdf0e43f469.png) | ![](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/231586bcd0902d06.png)  
   
 
