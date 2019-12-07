@@ -182,7 +182,7 @@ Veremos essa classe em detalhes:
 
 Veja mais sobre DAOs em [Como acessar dados usando DAOs do Room](https://developer.android.com/training/data-storage/room/accessing-data.html).
 
-## LiveData
+## `LiveData`
 Quando os dados são alterados, geralmente você deseja executar alguma ação, como exibir os dados atualizados na interface do usuário. Isso significa que você deve observar os dados para que, quando eles mudem, outros possam reagir a essa mudança.
 
 Dependendo de como os dados são armazenados, isso pode ser complicado. Observar alterações nos dados em vários componentes do seu aplicativo pode criar caminhos de dependência explícitos e rígidos entre os componentes. Isso dificulta o teste e a depuração, entre outras coisas.
