@@ -1,4 +1,4 @@
-## Criar o App
+## Criando o Projeto
 Abra o Android Studio e crie um novo projeto como a seguir: 
 
 * Selecione a opção `Empty Activity` 
