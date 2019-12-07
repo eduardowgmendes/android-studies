@@ -31,12 +31,21 @@ Iremos criar um app que implementa a arquitetura recomendada pelo Google usando 
 
 Construiremos um aplicativo que: 
 
-* Trabalha com um banco de dados para obter e salvar os dados e preenche previamente o banco de dados com algumas palavras.
+* Trabalha com um banco de dados para obter e salvar os dados e popula previamente o banco de dados com algumas palavras.
 * Exibe todas as palavras em um `RecyclerView` em `MainActivity`.
 * Abre uma segunda atividade quando o usuário toca no botão `+`. Quando o usuário digita uma palavra, adiciona a palavra ao banco de dados e à lista.
 
-![](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/what-we-build-app-demo.png)  
-  
+![Apresentação do App](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/what-we-build-app-demo.png)  
+
+### Panorama Geral dos componentes de arquitetura que o exemplo utilizará 
+O diagrama a seguir mostra todas as partes do aplicativo. Cada uma das caixas anexas (exceto o banco de dados SQLite) representa uma classe que você criará.
+
+![Diagrama da estrutura do App]()
+
+### O que você irá aprender? 
+Como projetar e construir um aplicativo usando as bibliotecas da Architecture Components Room e Lifecycles.
+
+Existem várias etapas para usar os componentes de arquitetura e implementar a arquitetura recomendada. O mais importante é criar um modelo mental do que está acontecendo, entendendo como as peças se encaixam e como os dados fluem. Ao trabalhar neste exemplo, não apenas copie e cole o código, mas tente começar a construir esse entendimento interno.
 
 
   
