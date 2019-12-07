@@ -181,5 +181,26 @@ Veremos essa classe em detalhes:
 8. `List<Word> getAlphabetizedWords()`: Retorna uma lista de palavras em ordem alfabética ascendente usando o parâmetro SQL `ORDER BY word ASC` da anotação presente nele `@Query("SELECT * from word_table ORDER BY word ASC")`.
 
 Veja mais sobre DAOs em [Como acessar dados usando DAOs do Room](https://developer.android.com/training/data-storage/room/accessing-data.html).
+
+## LiveData
+Quando os dados são alterados, geralmente você deseja executar alguma ação, como exibir os dados atualizados na interface do usuário. Isso significa que você deve observar os dados para que, quando eles mudem, outros possam reagir a essa mudança.
+
+Dependendo de como os dados são armazenados, isso pode ser complicado. Observar alterações nos dados em vários componentes do seu aplicativo pode criar caminhos de dependência explícitos e rígidos entre os componentes. Isso dificulta o teste e a depuração, entre outras coisas.
+
+O [`LiveData`](https://developer.android.com/topic/libraries/architecture/livedata.html), uma classe de [biblioteca do ciclo](https://developer.android.com/topic/libraries/architecture/lifecycle.html) de vida para observação de dados, resolve esse problema. Use um valor de retorno do tipo `LiveData` na descrição do seu método e o Room gera todo o código necessário para atualizar o `LiveData` quando o banco de dados for atualizado.
+
+**Nota**: Se você usar o `LiveData` independentemente do Room, precisará gerenciar a atualização dos dados. O `LiveData` não possui métodos disponíveis publicamente para atualizar os dados armazenados.
+
+Se você quiser atualizar os dados armazenados no `LiveData`, use `MutableLiveData` em vez do `LiveData`. A classe `MutableLiveData` possui dois métodos públicos que permitem definir o valor de um objeto `LiveData`, `setValue (T)` e `postValue (T)`. Normalmente, `MutableLiveData` é usado no `ViewModel` e, em seguida, o `ViewModel` expõe apenas objetos `LiveData` imutáveis ​​aos observadores.
+
+Na classe `WordDAO`, modifique o tipo de retorno do método `getAlphabetizedWords()` para `LiveData<List<Word>>` dessa forma: 
+
+```java
+@Query("SELECT * from word_table ORDER BY word ASC")
+   LiveData<List<Word>> getAlphabetizedWords();
+```
+
+Consulte a documentação do [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData.html) para saber mais sobre outras maneiras de usar o `LiveData` ou assista a este vídeo [Architecture Components: LifeData and Lifecycle](https://www.youtube.com/watch?v=OMcDk2_4LSk&index=8&list=PLWz5rJ2EKKc9mxIBd0DRw9gwXuQshgmn2). 
+
   
  
