@@ -266,5 +266,65 @@ Vejamos em detalhes esse código:
 
 6. Criamos um objeto ExecutorService com um número fixo de threads que serão usadas para realizar as operações sobre o banco de dados de forma assíncrona em uma thread rodando em background.  
 
+## `Repository`
+### O que é um `Repository`?
+Uma classe `Repository` abstrai o acesso a várias fontes de dados. O Repositório não faz parte das bibliotecas de Componentes de Arquitetura, mas é uma prática recomendada para separação e arquitetura de código. Uma classe `Repository` fornece uma API limpa para acesso a dados para o restante do aplicativo.
+
+![Respository Diagrama](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/repository-diagram.png)
+
+### Porque usar um `Repository`?
+Um Repositório gerencia consultas e permite usar vários back-ends. No exemplo mais comum, o Repositório implementa a lógica para decidir buscar dados de uma rede ou usar resultados armazenados em cache em um banco de dados local.
+
+### Implementando o `Repository`
+Crie uma classe chamada `WordRepository` como a seguir: 
+
+```java
+class WordRepository {
+
+    private WordDao mWordDao;
+    private LiveData<List<Word>> mAllWords;
+
+    // Note that in order to unit test the WordRepository, you have to remove the Application
+    // dependency. This adds complexity and much more code, and this sample is not about testing.
+    // See the BasicSample in the android-architecture-components repository at
+    // https://github.com/googlesamples
+    WordRepository(Application application) {
+        WordRoomDatabase db = WordRoomDatabase.getDatabase(application);
+        mWordDao = db.wordDao();
+        mAllWords = mWordDao.getAlphabetizedWords();
+    }
+
+    // Room executes all queries on a separate thread.
+    // Observed LiveData will notify the observer when the data has changed.
+    LiveData<List<Word>> getAllWords() {
+        return mAllWords;
+    }
+
+    // You must call this on a non-UI thread or your app will throw an exception. Room ensures
+    // that you're not doing any long running operations on the main thread, blocking the UI.
+    void insert(Word word) {
+        WordRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mWordDao.insert(word);
+        });
+    }
+}
+```
+Vejamos em detalhes o código: 
+
+1. O DAO é passado para o construtor do repositório, em oposição a todo o banco de dados. Isso ocorre porque você só precisa acessar o DAO, pois ele contém todos os métodos de leitura / gravação do banco de dados. Não há necessidade de expor o banco de dados inteiro ao repositório.
+
+2. O método `getAllWords()` retorna a lista de palavras `LiveData` de Room; podemos fazer isso devido à forma como definimos o método `getAlphabetizedWords()` para retornar o `LiveData` na etapa "[LiveData](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#livedata)". O quarto executa todas as consultas em um thread separado. O `LiveData` observado notificará o observador no thread principal quando os dados forem alterados.
+
+3. Como não precisamos executar a inserção no thread principal, usamos o `ExecutorService` que criamos no `WordRoomDatabase` para executar a inserção em um thread em segundo plano.
+
+Repositórios destinam-se a mediar entre diferentes fontes de dados. Neste exemplo simples, você tem apenas uma fonte de dados, portanto, o Repositório não faz muito. Veja o [BasicSample](https://github.com/android/architecture-components-samples/tree/master/BasicSample) para uma implementação mais complexa.
+
+## `ViewModel`
+### O que é o ViewModel?
+A função do `ViewModel` é fornecer dados para a interface do usuário e sobreviver a alterações na configuração. Um `ViewModel` atua como um centro de comunicação entre o `Repository` e a UI. Você também pode usar um `ViewModel` para compartilhar dados entre fragmentos. O `ViewModel` faz parte da biblioteca de [LifeCycle](https://developer.android.com/topic/libraries/architecture/lifecycle.html).
+
+Para um guia introdutório a este tópico, consulte [Visão geral do ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html) ou a publicação no blog [ViewModels: A Simple Example](https://medium.com/androiddevelopers/viewmodels-a-simple-example-ed5ac416317e).
+
   
+
  
