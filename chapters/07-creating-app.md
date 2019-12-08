@@ -323,8 +323,70 @@ Repositórios destinam-se a mediar entre diferentes fontes de dados. Neste exemp
 ### O que é o ViewModel?
 A função do `ViewModel` é fornecer dados para a interface do usuário e sobreviver a alterações na configuração. Um `ViewModel` atua como um centro de comunicação entre o `Repository` e a UI. Você também pode usar um `ViewModel` para compartilhar dados entre fragmentos. O `ViewModel` faz parte da biblioteca de [LifeCycle](https://developer.android.com/topic/libraries/architecture/lifecycle.html).
 
+![ViewModel Diagrama](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/viewmodel-diagram.png)
+
 Para um guia introdutório a este tópico, consulte [Visão geral do ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel.html) ou a publicação no blog [ViewModels: A Simple Example](https://medium.com/androiddevelopers/viewmodels-a-simple-example-ed5ac416317e).
 
+### Porque usar um `ViewModel`?
+Um ViewModel mantém os dados da interface do usuário do seu aplicativo de maneira consciente do ciclo de vida, que sobrevive às alterações na configuração. A separação dos dados de interface do usuário do seu aplicativo das classes `Activity` e `Fragment` permite que você siga melhor o princípio de responsabilidade única: **Suas atividades e fragmentos são responsáveis ​​por desenhar dados para a tela, enquanto o seu `ViewModel` pode manter e processar todos os dados necessários para a interface do usuário.**
+
+No ViewModel, use o LiveData para dados alteráveis ​​que a interface do usuário usará ou exibirá. O uso do LiveData possui vários benefícios:
+
+* Você pode colocar um `observer` nos dados (em vez de pesquisar mudanças) e atualizar apenas o
+a interface do usuário quando os dados realmente mudam.
+
+* O repositório e a interface do usuário são completamente separados pelo `ViewModel`.
+
+* Não há chamadas de banco de dados do `ViewModel` (tudo isso é tratado no `Repository`), tornando o código mais testável.
+
+### Implementando o `ViewModel`
+Crie a classe `WordViewModel` conforme a seguir: 
+
+```java
+public class WordViewModel extends AndroidViewModel {
+
+   private WordRepository mRepository;
+
+   private LiveData<List<Word>> mAllWords;
+
+   public WordViewModel (Application application) {
+       super(application);
+       mRepository = new WordRepository(application);
+       mAllWords = mRepository.getAllWords();
+   }
+
+   LiveData<List<Word>> getAllWords() { return mAllWords; }
+
+   public void insert(Word word) { mRepository.insert(word); }
+}
+```
+Vamos analisar o código em detalhes: 
+
+1. Criou uma classe chamada `WordViewModel` que obtém `Application` como parâmetro e estende o `AndroidViewModel`.
+
+2. Adicionada uma variável de membro privado para manter uma referência ao repositório.
+
+3. Adicionado um método `getAllWords()` para retornar uma lista de palavras em cache.
+
+4. Implementado um construtor que cria o `WordRepository`.
+
+5. No construtor, inicializou o `allWords()` `LiveData` usando o repositório.
+
+6. Criou um método de wrapper `insert()` que chama o método `insert()` do `Repository`. Dessa maneira, a implementação de `insert()` é encapsulada na interface do usuário.
+
+**Aviso**: não mantenha uma referência a um contexto que tenha um ciclo de vida mais curto que o seu `ViewModel`! Exemplos são:
+
+* `Activity`
+* `Fragment`
+* `View`
+
+Manter uma referência pode causar um vazamento de memória, por exemplo o `ViewModel` tem uma referência a uma atividade destruída! Todos esses objetos podem ser destruídos pelo sistema operacional e recriados quando houver uma alteração na configuração, e isso pode acontecer muitas vezes durante o ciclo de vida de um `ViewModel`.
+
+Se você precisar de um `application context` (que tem um ciclo de vida que dura tanto quanto o aplicativo), use `AndroidViewModel`, conforme mostrado aqui.
+
+**Importante**: os `ViewModels` não sobrevivem ao processo do aplicativo ser morto em segundo plano quando o sistema operacional precisa de mais recursos. Para dados da interface do usuário que precisam sobreviver à morte do processo devido à falta de recursos, você pode usar o módulo [Saved State para ViewModels](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate). Saiba mais [aqui](https://medium.com/androiddevelopers/viewmodels-persistence-onsaveinstancestate-restoring-ui-state-and-loaders-fc7cc4a6c090?).
+
+Para saber mais sobre o `ViewModel`assista ao vídeo [Architecture Components: ViewModel](https://www.youtube.com/watch?v=c9-057jC1ZA).
   
 
  
