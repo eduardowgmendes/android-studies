@@ -15,18 +15,20 @@ Todo o conteúdo está presente na pasta `chapters/` e conforme for atualizando 
 
 A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi recentemente sobre `Room` e `ViewModel`, `LiveData` e etc, com algumas pequenas alterações para manter o contexto geral do conteúdo escrito aqui. O conteúdo original está disponível aqui: [Android Room with a View - Java](https://codelabs.developers.google.com/codelabs/android-room-with-a-view)  
 
-1. [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
-	* [Introdução](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o)
-	* [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
-	* [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
-	* [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
-	* [`Entity`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-uma-entity)
-	* [Criando o `DAO`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-o-dao)
-	* [`LiveData`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#livedata)
-	* [`RoomDatabase`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#roomdatabase)
-	* [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#implementando-o-banco-de-dados)
-	* [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
-	* [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
+## Links úteis 
+
+* [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
+* [Introdução](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o)
+* [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
+* [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
+* [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
+* [`Entity`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-uma-entity)
+* [Criando o `DAO`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-o-dao)
+* [`LiveData`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#livedata)
+* [`RoomDatabase`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#roomdatabase)
+* [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#implementando-o-banco-de-dados)
+* [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
+* [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
                         
 
 
