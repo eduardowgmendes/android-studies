@@ -18,7 +18,6 @@ A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi r
 ## Links úteis 
 
 * [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
-* [Introdução](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o)
 * [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
 * [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
 * [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
