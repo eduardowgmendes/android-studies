@@ -7,7 +7,7 @@ Abra o Android Studio e crie um novo projeto como a seguir:
 
 ![Prompt de Criação do Projeto](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/app-creating-prompt.png)
 
-## Adicionando os repositórios ao Gradle
+## Adicionando as dependências ao Gradle
 Agora é necessário adicionar a biblioteca de componentes no Gradle. No arquivo `build.gradle` **(Module: app)** faça as seguintes alterações: 
 
 * Adicione o seguinte bloco [`compileOptions`](https://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.CompileOptions.html) dentro do bloco `android` para configurar o `sourceCompatibility` para 1.8, o que permite que nós utilizemos as [Lambdas](https://medium.com/dev-cave/por-tr%C3%A1s-da-programa%C3%A7%C3%A3o-funcional-do-java-8-bd8c0f172d45) da JDK 8 posteriormente.   
