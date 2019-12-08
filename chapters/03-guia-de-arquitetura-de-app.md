@@ -92,11 +92,10 @@ Antes de o sistema Android iniciar um componente de aplicativo, é preciso ler o
 
 O manifesto faz outras coisas além de declarar os componentes do aplicativo, por exemplo:
 
-
-    Identifica todas as permissões do usuário de que o aplicativo precisa, como acesso à Internet ou acesso somente leitura aos contatos do usuário.
-    Declara o nível de API mínimo exigido pelo aplicativo com base nas APIs que o aplicativo usa.
-    Declara os recursos de hardware e software usados ou exigidos pelo aplicativo, como câmera, serviços de Bluetooth ou tela multitoque.
-    Declara as bibliotecas API de que o aplicativo precisa para ser vinculado (além das APIs de biblioteca do Android), como a Biblioteca do Google Maps.
+* Identifica todas as permissões do usuário de que o aplicativo precisa, como acesso à Internet ou acesso somente leitura aos contatos do usuário.
+* Declara o nível de API mínimo exigido pelo aplicativo com base nas APIs que o aplicativo usa.
+* Declara os recursos de hardware e software usados ou exigidos pelo aplicativo, como câmera, serviços de Bluetooth ou tela multitoque.
+* Declara as bibliotecas API de que o aplicativo precisa para ser vinculado (além das APIs de biblioteca do Android), como a Biblioteca do Google Maps.
 
 
 ### Declaração de componentes
