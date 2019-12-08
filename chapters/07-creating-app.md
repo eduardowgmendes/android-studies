@@ -203,6 +203,8 @@ Na classe `WordDAO`, modifique o tipo de retorno do método `getAlphabetizedWord
 
 Consulte a documentação do [`LiveData`](https://developer.android.com/reference/androidx/lifecycle/LiveData.html) para saber mais sobre outras maneiras de usar o `LiveData` ou assista a este vídeo [Architecture Components: LifeData and Lifecycle](https://www.youtube.com/watch?v=OMcDk2_4LSk&index=8&list=PLWz5rJ2EKKc9mxIBd0DRw9gwXuQshgmn2). 
 
+Se desejar saber mais sobre o padrão `Observer` veja [Padrão de Projeto Observer](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/08-observer-pattern-and-more-details.md#padr%C3%A3o-de-projeto-observer)  
+
 ## `RoomDatabase`
 O banco de dados Room oferece uma camada de abstração sobre o SQLite para permitir acesso fluente ao banco de dados e, ao mesmo tempo, aproveitar toda a capacidade do SQLite.
 

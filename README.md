@@ -1,5 +1,5 @@
 ## Motivação
-A criação deste repositório assim como o estudo da arquitetura de desenvolvimento expressa aqui (*MVVM*), reflete uma necessidade pessoal de atualização de conhecimentos e mindset. Aprendi a desenvolver para a plataforma Android há algum tempo e nesse período as arquiteturas disponíveis para estruturar um aplicativo Android era o bom e velho MVC e também o MVP. 
+A criação deste repositório assim como o estudo da arquitetura de desenvolvimento expressa aqui (***MVVM***), reflete uma necessidade pessoal de atualização de conhecimentos e mindset. Aprendi a desenvolver para a plataforma Android há algum tempo e nesse período as arquiteturas disponíveis para estruturar um aplicativo Android era o bom e velho `MVC` e também o `MVP`. 
 
 O **`MVVM *Model-View-ViewModel`*** é o mais recente criado em 2006 pelo pessoal da Microsoft para desenvolvimento do Silverlight e em 2017 depois com o advento do [Android JetPack](https://developer.android.com/jetpack/) passou a ser a arquitetura recomendada para desenvolvimento de apps no Android. O problema é que eu nessa época eu acabei perdendo o fio da meada, afinal havia acabado de aprender uma montanha de conceitos sobre Java, Web e Android. 
 
@@ -13,7 +13,7 @@ Recomendo a leitura prévia do conteúdo disponível no Android Developers - [Gu
 ## Estrutura do repositório
 Todo o conteúdo está presente na pasta `chapters/` e conforme for atualizando com mais assuntos tudo ainda estará presente nesse diretório. O diretório `images/` serve apenas para as imagens presentes no conteúdo. 
 
-A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi recentemente sobre Room e ViewModel, LiveData e etc, com algumas pequenas alterações para manter o contexto geral do conteúdo escrito aqui. O conteúdo original está disponível aqui: [Android Room with a View - Java](https://codelabs.developers.google.com/codelabs/android-room-with-a-view)  
+A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi recentemente sobre `Room` e `ViewModel`, `LiveData` e etc, com algumas pequenas alterações para manter o contexto geral do conteúdo escrito aqui. O conteúdo original está disponível aqui: [Android Room with a View - Java](https://codelabs.developers.google.com/codelabs/android-room-with-a-view)  
 
 1. [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
 	* [Introdução](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o)
