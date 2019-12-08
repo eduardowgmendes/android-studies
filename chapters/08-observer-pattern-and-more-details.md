@@ -75,5 +75,12 @@ O diagrama UML abaixo ilustra a organização desse padrão.
 
 ![Observer UML](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/um-observer-diagram.png)
 
+Os personagens desse padrão são:
+
+* **`Observer`** (`AcaoObserver`): Interface dos objetos interessados no estado dos `Subjects`.
+* **`ConcreteObserver`** (`Corretora`): Implementação particular de um `Observer`.
+* **`Subject`**: Interface usada para padronizar os objetos que serão observados.
+* **`ConcreteSubject`** (`Acao`) Implementação de um `Subject`.
+
 
 
