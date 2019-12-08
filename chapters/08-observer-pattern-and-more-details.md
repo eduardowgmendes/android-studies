@@ -70,5 +70,10 @@ public class Acao {
 }
 ```
 
+### Organização
+O diagrama UML abaixo ilustra a organização desse padrão.
+
+![Observer UML](https://raw.githubusercontent.com/eduardowgmendes/android-studies/master/images/um-observer-diagram.png)
+
 
 
