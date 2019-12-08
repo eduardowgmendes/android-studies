@@ -1,3 +1,4 @@
+
 ## Criando o Projeto
 Abra o Android Studio e crie um novo projeto como a seguir: 
 
