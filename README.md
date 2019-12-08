@@ -15,7 +15,7 @@ Todo o conteúdo está presente na pasta `chapters/` e conforme for atualizando 
 
 A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi recentemente sobre Room e ViewModel, LiveData e etc, com algumas pequenas alterações para manter o contexto geral do conteúdo escrito aqui. O conteúdo original está disponível aqui: [Android Room with a View - Java](https://codelabs.developers.google.com/codelabs/android-room-with-a-view)  
 
-1. [Android Room com ViewModel, LiveData, DAOs e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-o-projeto).
+1. [Android Room com ViewModel, LiveData, DAOs e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
                         
 
 
