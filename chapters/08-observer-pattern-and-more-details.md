@@ -3,6 +3,7 @@
 ### Objetivo 
 Definir um mecanismo eficiente para reagir às alterações realizadas em determinados objetos. 
 
+### Cenário do Mundo Real
 Considere um supermercado em que os caixas possuem uma fila única. Cada caixa é identificado por um número, que é exibido em uma placa à sua frente. Esse número fica visível à todos os clientes da fila. 
 
 Também visível aos clientes da fila, existe um painel que exibe o número de identificação do próximo caixa disponível (se houver algum).
@@ -42,7 +43,7 @@ public class Corretora implements AcaoObserver{
 }
 ```
 
-Por outro lado, a classe Acao deve aceitar interessados (observadores) e avisá-los quando o seu
+Por outro lado, a classe `Acao` deve aceitar interessados (observadores) e avisá-los quando o seu
 valor for alterado.
 
 ```java
