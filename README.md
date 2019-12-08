@@ -25,8 +25,8 @@ A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi r
 	* [`LiveData`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#livedata)
 	* [`RoomDatabase`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#roomdatabase)
 	* [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#implementando-o-banco-de-dados)
-	* [Repository](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
-	* [ViewModel](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
+	* [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
+	* [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
                         
 
 
