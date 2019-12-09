@@ -390,6 +390,193 @@ Se você precisar de um `application context` (que tem um ciclo de vida que dura
 **Importante**: os `ViewModels` não sobrevivem ao processo do aplicativo ser morto em segundo plano quando o sistema operacional precisa de mais recursos. Para dados da interface do usuário que precisam sobreviver à morte do processo devido à falta de recursos, você pode usar o módulo [Saved State para ViewModels](https://developer.android.com/topic/libraries/architecture/viewmodel-savedstate). Saiba mais [aqui](https://medium.com/androiddevelopers/viewmodels-persistence-onsaveinstancestate-restoring-ui-state-and-loaders-fc7cc4a6c090?).
 
 Para saber mais sobre o `ViewModel`assista ao vídeo [Architecture Components: ViewModel](https://www.youtube.com/watch?v=c9-057jC1ZA).
-  
 
+## Hora de criar o Layout do App
+A próxima coisa a ser feita é criar o layout XML e adicionar um `RecyclerView`. 
+Para começar adicione o conteúdo abaixo ao arquivo `values/styles.xml`: 
+
+```xml
+<!-- The default font for RecyclerView items is too small.
+The margin is a simple delimiter between the words. -->
+<style name="word_title">
+   <item name="android:layout_width">match_parent</item>
+   <item name="android:layout_marginBottom">8dp</item>
+   <item name="android:paddingLeft">8dp</item>
+   <item name="android:background">@android:color/holo_orange_light</item>
+   <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+</style>
+```    
+
+Crie também um arquivo de layout chamado `layout/recyclerview_item_layout.xml`: 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/word_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light" />
+</LinearLayout>
+``` 
+No arquivo de layout `layout/activity_main.xml` substitua o `TextView` com um `RecylerView` e adicione também um `Floating Action Button` (FAB) com as seguintes configurações: 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/darker_gray"
+        tools:listitem="@layout/recyclerview_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```   
+
+Para que o FAB corresponda a ação de adicionar adicione um ícone de adicionar como `VectorDrawable` nos diretórios do seu projeto.
+
+No final o seu FAB se parecerá com o seguinte: 
+
+```xml
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_add_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+```  
+
+## Adicionando o RecyclerView
+Você exibirá os dados em um `RecyclerView`, que é um pouco melhor do que apenas jogar os dados em um `TextView`. Este exemplo supõe que você saiba como funciona o `RecyclerView`, `RecyclerView.LayoutManager`, `RecyclerView.ViewHolder` e `RecyclerView.Adapter`.
+
+Observe que a variável `mWords` no adaptador armazena em cache os dados. Na próxima tarefa, você adiciona o código que atualiza os dados automaticamente.
+
+Crie uma classe `WordListAdapter` que estenda `RecyclerView.Adapter`. Aqui está o código:
+
+```java
+public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.WordViewHolder> {
+
+   class WordViewHolder extends RecyclerView.ViewHolder {
+       private final TextView wordItemView;
+
+       private WordViewHolder(View itemView) {
+           super(itemView);
+           wordItemView = itemView.findViewById(R.id.textView);
+       }
+   }
+
+   private final LayoutInflater mInflater;
+   private List<Word> mWords; // Cached copy of words
+
+   WordListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+
+   @Override
+   public WordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+       View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
+       return new WordViewHolder(itemView);
+   }
+
+   @Override
+   public void onBindViewHolder(WordViewHolder holder, int position) {
+       if (mWords != null) {
+           Word current = mWords.get(position);
+           holder.wordItemView.setText(current.getWord());
+       } else {
+           // Covers the case of data not being ready yet.
+           holder.wordItemView.setText("No Word");
+       }
+   }
+
+   void setWords(List<Word> words){
+       mWords = words;
+       notifyDataSetChanged();
+   }
+
+   // getItemCount() is called many times, and when it is first called,
+   // mWords has not been updated (means initially, it's null, and we can't return null).
+   @Override
+   public int getItemCount() {
+       if (mWords != null)
+           return mWords.size();
+       else return 0;
+   }
+}
+``` 
+Adicione o RecyclerView no método `onCreate()` de `MainActivity`.
+
+No método `onCreate()` após `setContentView`:
+
+```java
+RecyclerView recyclerView = findViewById(R.id.recyclerview);
+final WordListAdapter adapter = new WordListAdapter(this);
+recyclerView.setAdapter(adapter);
+recyclerView.setLayoutManager(new LinearLayoutManager(this));
+```
+
+Execute seu aplicativo para garantir que tudo funcione. Não há itens, porque você ainda não conectou os dados, portanto, o aplicativo deve exibir um plano de fundo cinza sem nenhum item da lista.
+
+## Populando o banco de dados 
+
+Não há dados no banco de dados. Você adicionará dados de duas maneiras: 
+
+* Adicione alguns dados quando o banco de dados for aberto e adicione uma Atividade para adicionar palavras.
+
+Para excluir todo o conteúdo e preencher novamente o banco de dados sempre que o aplicativo for iniciado, crie um `RoomDatabase.Callback` e sobrescreva a implementação de `onOpen()`.
+
+**Nota**: Se você deseja preencher apenas o banco de dados na primeira vez que o aplicativo é iniciado, você pode substituir o método `onCreate()` no `RoomDatabase.Callback`.
+
+Aqui está o código para criar o retorno de chamada na classe `WordRoomDatabase`. Como você não pode executar operações de banco de dados da Room no thread da interface do usuário, `onOpen()` usa o `databaseWriteExecutor` definido anteriormente para executar uma lambda em um thread em segundo plano. O lambda exclui o conteúdo do banco de dados e o preenche com as duas palavras "Olá" e "Mundo". Sinta-se livre para adicionar mais palavras!
+
+```java
+private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+    @Override
+    public void onOpen(@NonNull SupportSQLiteDatabase db) {
+        super.onOpen(db);
+
+        // If you want to keep data through app restarts,
+        // comment out the following block
+        databaseWriteExecutor.execute(() -> {
+            // Populate the database in the background.
+            // If you want to start with more words, just add them.
+            WordDao dao = INSTANCE.wordDao();
+            dao.deleteAll();
+
+            Word word = new Word("Hello");
+            dao.insert(word);
+            word = new Word("World");
+            dao.insert(word);
+        });
+    }
+};
+```
+Em seguida, adicione o retorno de chamada à sequência de criação do banco de dados antes de chamar `.build()` no `Room.databaseBuilder()`
+
+```java
+.addCallback(sRoomDatabaseCallback)
+```
  
