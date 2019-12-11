@@ -730,5 +730,6 @@ fab.setOnClickListener(new View.OnClickListener() {
 });
 ```
 **Teste o seu App**
+
 Quando você adiciona uma nova palavra a base dados em `NewWordActivity`, a IU reflete as alterações na base de dados automaticamente.
 
