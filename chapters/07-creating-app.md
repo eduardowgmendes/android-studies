@@ -540,7 +540,7 @@ recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 Execute seu aplicativo para garantir que tudo funcione. Não há itens, porque você ainda não conectou os dados, portanto, o aplicativo deve exibir um plano de fundo cinza sem nenhum item da lista.
 
-## Populando o banco de dados 
+## Pré-Populando o banco de dados 
 
 Não há dados no banco de dados. Você adicionará dados de duas maneiras: 
 
@@ -579,4 +579,156 @@ Em seguida, adicione o retorno de chamada à sequência de criação do banco de
 ```java
 .addCallback(sRoomDatabaseCallback)
 ```
- 
+
+## Adicionando `NewWordActivity`
+Primeiramente adicione estes recursos ao arquivo `values/strings.xml`:
+
+```xml
+<string name="hint_word">Word...</string>
+<string name="button_save">Save</string>
+<string name="empty_not_saved">Word not saved because it is empty.</string>
+```
+Adicione também a segunte cor ao arquivo `values/colors.xml`:
+
+```xml
+<color name="buttonLabel">#d3d3d3</color>
+```
+
+Atualize o código de layout da `NewWordActivity` e deixe-o como o seguinte: 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical" android:layout_width="match_parent"
+   android:layout_height="match_parent">
+
+   <EditText
+       android:id="@+id/edit_word"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:fontFamily="sans-serif-light"
+       android:hint="@string/hint_word"
+       android:inputType="textAutoComplete"
+       android:padding="@dimen/small_padding"
+       android:layout_marginBottom="@dimen/big_padding"
+       android:layout_marginTop="@dimen/big_padding"
+       android:textSize="18sp" />
+
+   <Button
+       android:id="@+id/button_save"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/colorPrimary"
+       android:text="@string/button_save"
+       android:textColor="@color/buttonLabel" />
+
+</LinearLayout>
+
+```
+Atualize também o código Java da classe `NewWordActivity` conforme a seguir: 
+
+```java
+public class NewWordActivity extends AppCompatActivity {
+
+   public static final String EXTRA_REPLY = "com.example.android.wordlistsql.REPLY";
+
+   private  EditText mEditWordView;
+
+   @Override
+   public void onCreate(Bundle savedInstanceState) {
+       super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_new_word);
+       mEditWordView = findViewById(R.id.edit_word);
+
+       final Button button = findViewById(R.id.button_save);
+       button.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View view) {
+               Intent replyIntent = new Intent();
+               if (TextUtils.isEmpty(mEditWordView.getText())) {
+                   setResult(RESULT_CANCELED, replyIntent);
+               } else {
+                   String word = mEditWordView.getText().toString();
+                   replyIntent.putExtra(EXTRA_REPLY, word);
+                   setResult(RESULT_OK, replyIntent);
+               }
+               finish();
+           }
+       });
+   }
+}
+```
+
+## Conectando-se com os dados
+A etapa final é conectar a interface do usuário ao banco de dados, salvando novas palavras digitadas pelo usuário e exibindo o conteúdo atual do banco de dados de palavras no `RecyclerView`.
+
+Para exibir o conteúdo atual do banco de dados, adicione um observador que observe os `LiveData` no `ViewModel`.
+
+Sempre que os dados são alterados, o retorno de chamada `onChanged()` é chamado, que chama o método `setWord()` do adaptador para atualizar os dados em cache do adaptador e atualizar a lista exibida.
+
+Em `MainActivity`, crie uma variável de membro para o `ViewModel`:
+
+```java
+private WordViewModel mWordViewModel;
+``` 
+Use `ViewModelProviders` para associar seu `ViewModel` à sua `Activity`.
+
+Quando sua `Activity` for iniciada, os ViewModelProviders criarão o `ViewModel`. Quando a activity é destruída, por exemplo, através de uma alteração na configuração, o `ViewModel` persiste. Quando a activity é recriada, os `ViewModelProviders` retornam o `ViewModel` existente. Para mais informações, consulte [`ViewModel`](https://developer.android.com/topic/libraries/architecture/viewmodel.html).
+
+Em `onCreate()` abaixo do bloco de código `RecyclerView`, obtenha um `ViewModel` no `ViewModelProvider`.
+
+```java
+mWordViewModel = new ViewModelProvider(this).get(WordViewModel.class);
+```
+
+Também em onCreate (), adicione um observador para os LiveData retornados por getAlphabetizedWords (). O método onChanged () é acionado quando os dados observados são alterados e a atividade está em primeiro plano.
+
+```java
+mWordViewModel.getAllWords().observe(this, new Observer<List<Word>>() {
+   @Override
+   public void onChanged(@Nullable final List<Word> words) {
+       // Update the cached copy of the words in the adapter.
+       adapter.setWords(words);
+   }
+});
+```
+Defina um código de solicitação como um membro da `MainActivity`:
+
+```java
+public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
+```
+
+Em `MainActivity`, adicione o código `onActivityResult()` para o `NewWordActivity`.
+
+Se a atividade retornar com `RESULT_OK`, insira a palavra retornada no banco de dados chamando o método `insert()` do `WordViewModel`.
+
+```java
+public void onActivityResult(int requestCode, int resultCode, Intent data) {
+   super.onActivityResult(requestCode, resultCode, data);
+
+   if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+       Word word = new Word(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
+       mWordViewModel.insert(word);
+   } else {
+       Toast.makeText(
+               getApplicationContext(),
+               R.string.empty_not_saved,
+               Toast.LENGTH_LONG).show();
+   }
+}
+```
+Em `MainActivity`, inicie `NewWordActivity` quando o usuário tocar no `FAB`. No `MainActivity` `onCreate()`, localize o `FAB` e adicione um `onClickListener` com este código:
+
+```java
+FloatingActionButton fab = findViewById(R.id.fab);
+fab.setOnClickListener(new View.OnClickListener() {
+   @Override
+   public void onClick(View view) {
+       Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
+       startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
+   }
+});
+```
+**Teste o seu App**
+Quando você adiciona uma nova palavra a base dados em `NewWordActivity`, a IU reflete as alterações na base de dados automaticamente.
+
