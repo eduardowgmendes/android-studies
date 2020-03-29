@@ -5,7 +5,7 @@ O **`MVVM *Model-View-ViewModel`*** é o mais recente criado em 2006 pelo pessoa
 
 Recentemente fiz um teste para uma grande empresa de tecnologia e acabei infelizmente não obtendo êxito, o que me deixou com um misto de tristeza e desânimo. Mas não adianta chorar por algo que eu não sei. Tudo isso serviu de aprendizagem e experiência e eu agradeço pela oportunidade pois foi graças a esse teste que eu estou aqui agora escrevendo todo esse material para auxiliar pessoas que também estão no mesmo barco que eu.     
 
-Nossa área é uma das mais prósperas no mercado e também é a que mais rápido se atualiza. Ela exige do profissional que ele sempre se mantenha no mesmo ritmo, e isso é bom. Para quem curte sempre aprender é sensacional! É o meu caso! E se for o seu também, vamos juntos compreender os por menores dessa arquitetura.
+Nossa área é uma das mais prósperas no mercado e também é a que mais rápido se atualiza. Ela exige do profissional que ele sempre se mantenha no mesmo ritmo, e isso é bom. Para quem curte sempre aprender é sensacional! É o meu caso! E se for o seu também, vamos juntos compreender os pormenores dessa arquitetura.
 
 Recomendo a leitura prévia do conteúdo disponível no Android Developers - [Guia para a arquitetura do app](https://developer.android.com/jetpack/docs/guide)
 
