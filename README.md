@@ -11,7 +11,7 @@ Recomendo a leitura prévia do conteúdo disponível no Android Developers - [Gu
 
 
 ## Estrutura do repositório
-Todo o conteúdo está presente na pasta `chapters/` e conforme for atualizando com mais assuntos tudo ainda estará presente nesse diretório. O diretório `images/` serve apenas para as imagens presentes no conteúdo. 
+Todo o conteúdo está presente na pasta `/chapters` e conforme for atualizando com mais assuntos tudo ainda estará presente nesse diretório. O diretório `/images` serve apenas para as imagens presentes no conteúdo. Já o diretório `/android-basics` reúne todo o conteúdo comum ao desenvolvimento Android.    
 
 A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi recentemente sobre `Room` e `ViewModel`, `LiveData` e etc, com algumas pequenas alterações para manter o contexto geral do conteúdo escrito aqui. O conteúdo original está disponível aqui: [Android Room with a View - Java](https://codelabs.developers.google.com/codelabs/android-room-with-a-view)  
 
@@ -31,6 +31,15 @@ Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomend
 * [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#implementando-o-banco-de-dados)
 * [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
 * [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
+
+### Desenvolvimento Básico Android
+
+* [Broadcast Receiver]()
+* [Notifications]()
+* [Alarm Manager]()
+* [Services e JobInfo]()
+
+   
                         
 
 
