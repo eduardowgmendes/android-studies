@@ -34,10 +34,10 @@ Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomend
 
 ### Desenvolvimento Básico Android
 
-* [Broadcast Receiver]()
-* [Notifications]()
-* [Alarm Manager]()
-* [Services e JobInfo]()
+* [Broadcast Receiver](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/broadcast-receiver.md)
+* [Notifications](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/notifications.md)
+* [Alarm Manager](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/alarm-manager.md)
+* [Services e JobInfo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/services-jobinfo.md)
 
    
                         
