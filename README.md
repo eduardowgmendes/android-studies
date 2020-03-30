@@ -17,6 +17,9 @@ A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi r
 
 ## Links úteis 
 
+### CODELAB Introdução ao MMVM - *Model View-Model*
+Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomendada pelo Google para estruturar suas aplicações e promover melhor extensiblidade e manutenibilidade ao seu projeto:
+
 * [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
 * [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
 * [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
