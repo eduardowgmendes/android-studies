@@ -3,7 +3,7 @@ Conheça uma das classes mais importantes da arquitetura do Android. Ela é util
 
 Na prática, o broadcast receiver é uma classe que consegue interceptar uma intent, sendo uma intent uma mensagem que pode ser enviada pela sua própria aplicação, por uma aplicação de terceiros ou pelo próprio sistema operacional. 
 
-Um broadcast receiver sempre executa em segundo plano (background) e não utiliza interface gráfica. Seu objetivo é interceptar uma mensagem (intent) e processá-la sem que o usuário perceba. 
+Um broadcast receiver sempre executa em segundo plano (background) e não utiliza interface gráfica. Seu objetivo é interceptar uma mensagem ([`Intent`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/intents.md)) e processá-la sem que o usuário perceba. 
 
 ## Introdução 
 A classe `android.content.BroadcastReceiver` é utilizada para interceptar mensagens enviadas por uma intent. Quando a mensagem é interceptada, o método `onReceive(context, intent)` é chamado, e executa em segundo plano, sem mostrar nenhuma tela ao usuário. 
