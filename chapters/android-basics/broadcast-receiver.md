@@ -15,6 +15,8 @@ Um broadcast receiver consegue interceptar uma intent/mensagem mesmo se aplicaç
 ## Configurando um receiver de forma estática
 Um receiver pode ser configurado de forma estática no arquivo `AndroidManifest.xml` ou de forma dinâmica no código: 
 
+De forma estática, no arquivo `AndroidManifest.xml` com a tag `<receiver>`. Isso é útil quando precisamos interceptar a mensagem mesmo se a aplicação estiver fechada. É o caso de interceptar uma mensagem SMS ou Push, pois geralmente esse tipo de mensagem precisa ser interceptada mesmo com a aplicação fechada. 
+
 ```xml 
 <manifest ...>
 	<application ...>
@@ -28,4 +30,7 @@ Um receiver pode ser configurado de forma estática no arquivo `AndroidManifest.
 	</application>
 </manifest>
 ```
+Registrar o receiver dinamicamente na activity. Nesse caso, o receiver fica atrelado ao ciclo de vida da activity, ou seja, o receiver ficará ativo somente enquanto a activity estiver aberta. Esse recurso é muito utilizado para enviar mensagens internas da aplicação. Por exemplo, um receiver pode interceptar um evento de que o estado da conexão com a internet mudou, e enviar uma mensagem local para avisar a activity se a aplicação está online ou offline.   
+
+
   
