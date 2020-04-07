@@ -20,10 +20,13 @@ A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi r
 ### CODELAB Introdução ao MMVM - *Model View-Model*
 Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomendada pelo Google para estruturar suas aplicações e promover melhor extensiblidade e manutenibilidade ao seu projeto:
 
+### Introdução ao MVVM 
 * [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
 * [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
 * [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
 * [Panorama Geral dos componentes de arquitetura](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#panorama-geral-dos-componentes-de-arquitetura-que-o-exemplo-utilizar%C3%A1)
+
+### Começando com MVVM - Criando um Projeto 
 * [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
 * [`Entity`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#criando-uma-entity)
 * [Criando o `DAO`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#criando-o-dao)
