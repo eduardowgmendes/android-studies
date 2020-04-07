@@ -3,7 +3,9 @@ A criação deste repositório assim como o estudo da arquitetura de desenvolvim
 
 O ***MVVM `Model-View-ViewModel`*** é o mais recente criado em 2006 pelo pessoal da Microsoft para desenvolvimento do Silverlight e em 2017 depois com o advento do [Android JetPack](https://developer.android.com/jetpack/) passou a ser a arquitetura recomendada para desenvolvimento de apps no Android. O problema é que eu nessa época eu acabei perdendo o fio da meada, afinal havia acabado de aprender uma montanha de conceitos sobre Java, Web e Android. 
 
-Recentemente fiz um teste para uma grande empresa de tecnologia e acabei infelizmente não obtendo êxito, o que me deixou com um misto de tristeza e desânimo. Mas não adianta chorar por algo que eu não sei. Tudo isso serviu de aprendizagem e experiência e eu agradeço pela oportunidade pois foi graças a esse teste que eu estou aqui agora escrevendo todo esse material para auxiliar pessoas que também estão no mesmo barco que eu.     
+Recentemente fiz um teste para uma grande empresa de tecnologia e acabei infelizmente não obtendo êxito, o que me deixou com um misto de tristeza e desânimo. Mas não adianta chorar por algo que eu não sei. Tudo isso serviu de aprendizagem e experiência e eu agradeço pela oportunidade pois foi graças a esse teste que eu estou aqui agora escrevendo todo esse material para auxiliar pessoas que também estão no mesmo barco que eu. 
+
+**Nota**: Se você quiser dar uma olhada no meu projeto de teste final, sinta-se à vontade para clicar [aqui](https://github.com/eduardowgmendes/desafio-mobile). Lá também disponibilizei o `apk` para testar em seu dispositivo Android real.      
 
 Nossa área é uma das mais prósperas no mercado e também é a que mais rápido se atualiza. Ela exige do profissional que ele sempre se mantenha no mesmo ritmo, e isso é bom. Para quem curte sempre aprender é sensacional! É o meu caso! E se for o seu também, vamos juntos compreender os pormenores dessa arquitetura.
 
