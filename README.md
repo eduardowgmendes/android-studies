@@ -20,17 +20,18 @@ A primeira parte do conteúdo é apenas uma tradução de um CodeLab que eu vi r
 ### CODELAB Introdução ao MMVM - *Model View-Model*
 Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomendada pelo Google para estruturar suas aplicações e promover melhor extensiblidade e manutenibilidade ao seu projeto:
 
-* [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#introdu%C3%A7%C3%A3o).
-* [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-s%C3%A3o-os-componentes-de-arquitetura-recomendados)
-* [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/09-introduction-mvvm.md#o-que-iremos-contruir)
-* [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
-* [`Entity`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-uma-entity)
-* [Criando o `DAO`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-o-dao)
-* [`LiveData`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#livedata)
-* [`RoomDatabase`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#roomdatabase)
-* [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#implementando-o-banco-de-dados)
-* [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#repository)
-* [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#viewmodel)
+* [Android `Room` com `ViewModel`, `LiveData`, `DAOs` e etc](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados).
+* [Componentes de Arquitetura Recomendados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
+* [Overview do Exemplo](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
+* [Panorama Geral dos componentes de arquitetura](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
+* [Adicionando dependências ao Gradle](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#adicionando-as-depend%C3%AAncias-ao-gradle)
+* [`Entity`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#criando-uma-entity)
+* [Criando o `DAO`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#criando-o-dao)
+* [`LiveData`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#livedata)
+* [`RoomDatabase`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#roomdatabase)
+* [Implementando o Banco de Dados](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
+* [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
+* [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#implementando-o-banco-de-dados)
 
 ### Desenvolvimento Básico Android
 

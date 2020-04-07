@@ -47,6 +47,6 @@ Como projetar e construir um aplicativo usando as bibliotecas da Architecture Co
 
 Existem várias etapas para usar os componentes de arquitetura e implementar a arquitetura recomendada. O mais importante é criar um modelo mental do que está acontecendo, entendendo como as peças se encaixam e como os dados fluem. Ao trabalhar neste exemplo, não apenas copie e cole o código, mas tente começar a construir esse entendimento interno.
 
-[Vamos Lá!](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/07-creating-app.md#criando-o-projeto)
+[Vamos Lá!](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#criando-o-projeto)
 
 
