@@ -36,6 +36,9 @@ Abaixo você encontra informações relevantes sobre a arquitetura MVVM recomend
 * [`Repository`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#repository)
 * [`ViewModel`](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/miscellaneous/07-creating-app.md#viewmodel)
 
+## Começando no Android
+Abaixo você encontra um índice para os conteúdos comuns ao desenvolvimento Android. Tudo o que você precisa para começar a desenvolver na plataforma mobile mais utilizada do mundo. 
+
 ### Desenvolvimento Básico Android
 
 * [Broadcast Receiver](https://github.com/eduardowgmendes/android-studies/blob/master/chapters/android-basics/broadcast-receiver.md)
